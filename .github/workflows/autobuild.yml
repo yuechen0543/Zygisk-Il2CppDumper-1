@@ -1,39 +1,39 @@
-name: Auto Build (Dev Branch)
+名称：自动构建（开发分支）: Auto Build (Dev Branch)
 
-on:
-  workflow_dispatch:
-    inputs:
-      skip_cache:
-        description: 'Skip cache restoration'
-        required: false
-        default: false
-        type: boolean
-  push:
-    branches: [ dev ]
-  pull_request:
-    branches: [ dev ]
+在::
+  工作流_派送::
+    输入：:
+      跳过缓存::
+        描述: '跳过缓存恢复': 'Skip cache restoration'
+        必填： false: false
+        默认：false: false
+        类型：布尔值: boolean
+  推送::
+    分支: [ dev ]: [ dev ]
+  拉取请求::
+    分支: [ dev ]: [ dev ]
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+环境::
+  强制将JavaScript操作转换为节点24：真: true
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    environment: build
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4.2.2
-      with:
-        ref: dev  # 使用dev分支
+工作::
+  构建::
+    运行于: ubuntu-latest: ubuntu-latest
+    环境：构建: build
+    步骤：:
+    - 名称: 结账代码name: Checkout code
+      用途：actions/checkout@v4.2.2: actions/checkout@v4.2.2
+      与：:
+        ref: dev  # 使用dev分支: dev  # 使用dev分支
     
-    - name: Setup Android SDK
-      uses: android-actions/setup-android@v4
-      with:
-        api-level: 34
-        build-tools-version: 34.0.0
-        ndk-version: 26.2.11394342
+    - 名称: 设置 Android SDKname: Setup Android SDK
+      用途: android-actions/setup-android@v4: android-actions/setup-android@v4
+      与：:
+        api-level: 34: 34
+        构建工具版本: 34.0.0: 34.0.0
+        ndk-version: 26.2.11394342: 26.2.11394342
     
-    - name: Set up Java
+    - 名称: 设置Javaname: Set up Java
       uses: actions/setup-java@v4.8.0
       with:
         distribution: temurin
